@@ -2,6 +2,7 @@ package example;
 
 import ie.tudublin.Visual;
 
+
 public class CubeVisual extends Visual
 {
     boolean twocubes = false;
@@ -36,7 +37,7 @@ public class CubeVisual extends Visual
         setFrameSize(256);
 
         startMinim();
-        loadAudio("heroplanet.mp3");
+        loadAudio("03. SICKO MODE.mp3");
         //getAp().play();
         //startListening(); 
         
@@ -46,6 +47,9 @@ public class CubeVisual extends Visual
 
     public void draw()
     {
+      
+
+        
         calculateAverageAmplitude();
         background(0);
         noFill();
@@ -87,4 +91,5 @@ public class CubeVisual extends Visual
         angle += 0.01f;
     }
     float angle = 0;
+    
 } 
