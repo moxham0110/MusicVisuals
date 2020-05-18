@@ -8,7 +8,7 @@ public class SeaFoam {
     private float y;
 
 
-    int rippleY;
+   
     int flag = 0;
    
     public SeaFoam(float h, float y) {
@@ -22,13 +22,13 @@ public class SeaFoam {
 
     public void tideIn() {
         if (y > -30) {
-            y -= 5;
+            y -= .25;
         }
     }
 
     public void tideOut() {
         if (y < 35) {
-            y += 5;
+            y += .25;
         }
     }
 
@@ -72,29 +72,13 @@ public class SeaFoam {
         pa.popMatrix();
 
 
-        
-
-        //small ripples
-        /*
-        for(int i = 0; i < 800; i += 200){
-            pa.fill(-1);
-            pa.strokeWeight(h/8);
-            pa.pushMatrix();
-            pa.translate(90, 420);
-            pa.rotate(0);
-            pa.ellipse(h - 50 + i  , -y + rippleY, 85 + h/8, 2);
-            pa.popMatrix();
-        } 
-        */   
-    
-
     }
 
     public void animate() {
 
         if (flag == 0) {
             h -= 0.25;
-            rippleY -= 0.25;
+            
             if (h == 20) {
                 flag = 1;
             }
@@ -102,7 +86,7 @@ public class SeaFoam {
         } else {
 
             h += 0.25;
-            rippleY -= 0.25;
+            
 
             if (h == 41) {
                 flag = 0;

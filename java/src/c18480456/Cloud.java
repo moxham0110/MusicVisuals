@@ -21,9 +21,9 @@ public class Cloud {
     public void render(PApplet pa, boolean rainMode) {
 
 
-        //grey or white clouds
+        //grey or white clouds depending on weather
         if (rainMode == true) {
-            if (colorCount > 125) {
+            if (colorCount > 100) {
                 colorCount--;
             }
             pa.fill(colorCount);
@@ -35,6 +35,7 @@ public class Cloud {
             pa.fill(colorCount);
         }
 
+        //2 arcs and 2 ellipse make up a cloud
         pa.noStroke();
         pa.pushMatrix();
         pa.translate((float) 189.93904, (float) 109.0786);
@@ -70,7 +71,7 @@ public class Cloud {
             // reset
             x = -300;
             // clouds be at slight different heights
-            y = pa.random(5, 50);
+            y = pa.random(20, 60);
         }
         x += 0.5;
     }

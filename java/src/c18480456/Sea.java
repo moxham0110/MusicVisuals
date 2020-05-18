@@ -20,6 +20,7 @@ public class Sea {
     }
 
     public void render(PApplet pa){
+
         pa.fill(-10059546);
         pa.noStroke();
         pa.pushMatrix();
@@ -32,18 +33,24 @@ public class Sea {
         
     }
     
-    public void tideIn(){
+    public int tideIn(){
         if(h < 120)
         {
-            h = h + (float)5;
+            h += .25;
+        }else{
+            return 1;
         }
+        return 0;
     }
 
-    public void tideOut(){
+    public int tideOut(){
         if(h > 60)
         {
-            h -= 5;
+            h -= .25;
+        }else{
+            return 1;
         }
+        return 0;
     }
 
     public float getX() {

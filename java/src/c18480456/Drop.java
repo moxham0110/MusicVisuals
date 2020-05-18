@@ -4,6 +4,7 @@ import processing.core.PApplet;
 
 public class Drop {
 
+   
     private float x;
     private float y;
     private float length;
@@ -19,17 +20,20 @@ public class Drop {
     }
 
     public void fall(PApplet pa) {
+    
         y+=10;
-
+        //reset
         if(y > 800){
+            //fall from different heights
             y = -(pa.random(50, 600));
-            System.out.println(y);
         }
     }
 
     public void render(PApplet pa) {
 
-        pa.strokeWeight(2);
+         //a drop is a single line
+
+        pa.strokeWeight(pa.random(1, 3));
         pa.stroke(20, 83, 216);
         pa.line(x, y, x, y + length);
 

@@ -1,14 +1,14 @@
 package c18480456;
 
-import java.util.Random;
+import processing.core.PApplet;
 
-public class bubble {
+public class Bubble {
     private int x;
     private int y;
     private int bHeight;
     private int bWidth;
 
-    public bubble()
+    public Bubble()
     {
         this.bHeight = 50;
         this.bWidth = 50;
