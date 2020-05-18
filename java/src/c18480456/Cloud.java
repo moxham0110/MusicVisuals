@@ -6,60 +6,70 @@ public class Cloud {
 
     private float x;
     private float y;
+    private int colorCount;
 
     public Cloud(float x) {
         this.x = x;
         this.y = 10;
+        colorCount = 255;
     }
 
     public Cloud() {
         this(-100);
     }
 
-    public void render(PApplet pa) {
+    public void render(PApplet pa, boolean rainMode) {
 
-       
-            pa.fill(-1);
-            pa.noStroke();
-            pa.pushMatrix();
-            pa.translate((float) 189.93904, (float) 109.0786);
-            pa.rotate((float) 0.0);
-            pa.arc(x, y, (float) 92.94444, (float) 75.80816, (float) 3.125969, (float) 6.2831855, pa.PIE);
-            pa.popMatrix();
 
-            pa.fill(-1);
-            pa.noStroke();
-            pa.pushMatrix();
-            pa.translate((float) 252.94717, (float) 108.401085);
-            pa.rotate((float) 0.0);
-            pa.arc(x, y, (float) 92.94444, (float) 76.471275, (float) 3.125969, (float) 6.2831855, pa.PIE);
-            pa.popMatrix();
+        //grey or white clouds
+        if (rainMode == true) {
+            if (colorCount > 125) {
+                colorCount--;
+            }
+            pa.fill(colorCount);
+        } else {
 
-            pa.fill(-1);
-            pa.noStroke();
-            pa.pushMatrix();
-            pa.translate((float) 244.13957, (float) 72.493225);
-            pa.rotate((float) 0.0);
-            pa.ellipse(x, y, (float) 77.28331, (float) 48.780487);
-            pa.popMatrix();
+            if (colorCount < 255) {
+                colorCount++;
+            }
+            pa.fill(colorCount);
+        }
 
-            pa.fill(-1);
-            pa.noStroke();
-            pa.pushMatrix();
-            pa.translate((float) 202.13416, (float) 77.913284);
-            pa.rotate((float) 0.0);
-            pa.ellipse(x, y, (float) 77.28331, (float) 48.780487);
-            pa.popMatrix();
+        pa.noStroke();
+        pa.pushMatrix();
+        pa.translate((float) 189.93904, (float) 109.0786);
+        pa.rotate((float) 0.0);
+        pa.arc(x, y, (float) 92.94444, (float) 75.80816, (float) 3.125969, (float) 6.2831855, pa.PIE);
+        pa.popMatrix();
 
-        
+        pa.noStroke();
+        pa.pushMatrix();
+        pa.translate((float) 252.94717, (float) 108.401085);
+        pa.rotate((float) 0.0);
+        pa.arc(x, y, (float) 92.94444, (float) 76.471275, (float) 3.125969, (float) 6.2831855, pa.PIE);
+        pa.popMatrix();
+
+        pa.noStroke();
+        pa.pushMatrix();
+        pa.translate((float) 244.13957, (float) 72.493225);
+        pa.rotate((float) 0.0);
+        pa.ellipse(x, y, (float) 77.28331, (float) 48.780487);
+        pa.popMatrix();
+
+        pa.noStroke();
+        pa.pushMatrix();
+        pa.translate((float) 202.13416, (float) 77.913284);
+        pa.rotate((float) 0.0);
+        pa.ellipse(x, y, (float) 77.28331, (float) 48.780487);
+        pa.popMatrix();
 
     }
 
     public void glide(PApplet pa) {
         if (x > 700) {
-            //reset
+            // reset
             x = -300;
-            //clouds be at slight different heights
+            // clouds be at slight different heights
             y = pa.random(5, 50);
         }
         x += 0.5;
@@ -72,6 +82,5 @@ public class Cloud {
     public void setX(float x) {
         this.x = x;
     }
-
 
 }

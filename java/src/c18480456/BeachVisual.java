@@ -14,11 +14,14 @@ public class BeachVisual extends Visual {
     Cloud c3 = new Cloud(600);
     LightSource myLightSource = new LightSource();
     ArrayList<Star> stars = new ArrayList<Star>();
+    ArrayList<Drop> raindrops = new ArrayList<Drop>();
     Star s;
+    Drop d;
 
     int changeTime = 0;
     int startFlag = 0;
     boolean nightFlag = false;
+    int weatherType = -1;
 
     public void settings() {
         size(800, 600);
@@ -31,8 +34,18 @@ public class BeachVisual extends Visual {
         // stars
         for (int i = 0; i < 50; i++) {
 
+            // star x, y
             s = new Star(random(50, 800), random(20, 280));
             stars.add(s);
+
+        }
+
+        // raindrops
+        for (int i = 0; i < 300; i++) {
+
+            // drop x, y, length
+            d = new Drop(random(0, 800), -(random(50, 700)), random(2, 6));
+            raindrops.add(d);
 
         }
 
@@ -45,7 +58,6 @@ public class BeachVisual extends Visual {
         mySeaFoam.render(this);
         mySeaFoam.animate();
         mySky.render(this);
-        
 
         if (nightFlag == true) {
             for (Star s : stars) {
@@ -54,13 +66,43 @@ public class BeachVisual extends Visual {
 
             mySky.nightMode(nightFlag);
 
-
-        }else{
+        } else {
             mySky.nightMode(nightFlag);
         }
 
-
         myLightSource.render(this);
+
+        // raining
+        if (weatherType == 1) {
+            for (Drop d : raindrops) {
+                d.render(this);
+                d.fall(this);
+            }
+
+            c1.render(this, true);
+       
+            c2.render(this, true);
+        
+            c3.render(this, true);
+
+        }else{
+            c1.render(this, false);
+       
+            c2.render(this, false);
+        
+            c3.render(this, false);
+        }
+
+       
+        
+        
+
+        c1.glide(this);
+        c2.glide(this);
+        c3.glide(this);
+
+
+        
 
         // if n pressed
         if (changeTime == 1) {
@@ -80,14 +122,6 @@ public class BeachVisual extends Visual {
 
             }
         }
-
-        // clouds
-        c1.render(this);
-        c1.glide(this);
-        c2.render(this);
-        c2.glide(this);
-        c3.render(this);
-        c3.glide(this);
 
     }
 
@@ -110,6 +144,10 @@ public class BeachVisual extends Visual {
         if (key == 'n' || key == 'N') {
             changeTime = 1;
             nightFlag = !nightFlag;
+        }
+
+        if (key == 'r' || key == 'R') {
+            weatherType = weatherType * -1;
         }
     }
 
