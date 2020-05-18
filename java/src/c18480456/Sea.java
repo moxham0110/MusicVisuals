@@ -20,7 +20,7 @@ public class Sea {
     }
 
     public void render(PApplet pa){
-        pa.fill(-3342337);
+        pa.fill(-10059546);
         pa.noStroke();
         pa.pushMatrix();
         pa.translate(93, 355);

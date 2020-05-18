@@ -1,0 +1,40 @@
+package c18480456;
+
+import processing.core.PApplet;
+
+public class Star {
+    private float x1;
+    private float y1;
+    private float x2 = x1 - 5;
+    private float y2 = y1 + 10;
+    private float x3 = x1 + 5;
+    private float y3 = y1 + 10;
+    
+
+    public Star(){
+        this(0 , 0);
+    }
+
+
+    public void render(PApplet pa){ 
+
+        pa.noStroke();
+        pa.fill(-1);
+        pa.triangle(x1, y1, x2, y2, x3, y3);
+        pa.triangle(x1, y1+12, x2, y2 - 6, x3, y3 - 6);  
+
+
+    }
+
+    public Star(float x1, float y1) {
+        this.x1 = x1;
+        this.y1 = y1;
+
+        x2 = x1 - 5;
+        y2 = y1 + 10;
+        x3 = x1 + 5;
+        y3 = y1 + 10;
+
+    }
+ 
+}
