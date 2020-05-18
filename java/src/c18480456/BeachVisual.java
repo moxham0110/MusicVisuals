@@ -27,6 +27,8 @@ public class BeachVisual extends Visual {
     boolean nightFlag = false;
     int weatherType = -1;
     int tideFlag = 0;
+    int colorMode = -1;
+    float color;
 
     public void settings() {
         size(800, 600);
@@ -36,7 +38,7 @@ public class BeachVisual extends Visual {
     public void setup() {
 
         startMinim();
-        loadAudio("Shakedown At Night.mp3");
+        loadAudio("01 You Don't Know Me.mp3");
 
         // create objects
         mySea = new Sea();
@@ -56,10 +58,10 @@ public class BeachVisual extends Visual {
 
         }
 
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 200; i++) {
 
             // drop x, y, length
-            d = new Drop(random(0, 800), -(random(100, 700)), random(2, 6));
+            d = new Drop(random(0, 800), -(random(100, 400)), random(2, 6));
             raindrops.add(d);
 
         }
@@ -82,10 +84,24 @@ public class BeachVisual extends Visual {
         mySeaFoam.animate();
         mySky.render(this);
 
+        //if at night
         if (nightFlag == true) {
-            for (Star s : stars) {
-                s.render(this);
 
+            // stars rendered with normal or with color mode on
+            if (colorMode == -1) {
+                for (Star s : stars) {
+                    s.render(this, false, 0);
+                    s.twinkleStar();
+                }
+            } else { // if on
+                for (Star s : stars) {
+                    calculateAverageAmplitude();
+                    lights();
+                    color = map(getSmoothedAmplitude(), 0, 1, 0, 255);
+
+                    s.render(this, true, color);
+                    s.twinkleStar();
+                }
             }
 
             mySky.nightMode(nightFlag);
@@ -98,8 +114,19 @@ public class BeachVisual extends Visual {
 
         // raining
         if (weatherType == 1) {
-            for (Drop d : raindrops) {
-                d.render(this);
+
+            // if color mode off
+            if (colorMode == -1) {
+                for (Drop d : raindrops) {
+                    d.render(this, false, 0);
+                }
+            } else { // if on
+                for (Drop d : raindrops) {
+                    calculateAverageAmplitude();
+                    color = map(getSmoothedAmplitude(), 0, 1, 0, 255);
+
+                    d.render(this, true, color);
+                }
             }
 
             c1.render(this, true);
@@ -125,17 +152,11 @@ public class BeachVisual extends Visual {
         c2.glide(this);
         c3.glide(this);
 
-        // stars
-        for (Star s : stars) {
-            s.twinkleStar();
-        }
-
-         // raindrops
+        // raindrops
         for (Drop d : raindrops) {
+
             d.fall(this);
         }
-
-       
 
         // sea tide
         if (tideFlag == 1) {
@@ -185,8 +206,13 @@ public class BeachVisual extends Visual {
             }
         }
 
+        // toggle on/off
         if (key == 'r' || key == 'R') {
             weatherType = weatherType * -1;
+        }
+
+        if (key == 'c' || key == 'C') {
+            colorMode = colorMode * -1;
         }
 
         if (key == ' ') {

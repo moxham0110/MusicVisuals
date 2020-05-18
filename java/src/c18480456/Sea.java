@@ -34,6 +34,7 @@ public class Sea {
     }
     
     public int tideIn(){
+        //tide comes in until at shoreline
         if(h < 120)
         {
             h += .25;
@@ -44,6 +45,7 @@ public class Sea {
     }
 
     public int tideOut(){
+        //tide goes out until at max
         if(h > 60)
         {
             h -= .25;

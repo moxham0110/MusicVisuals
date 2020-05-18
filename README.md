@@ -12,12 +12,41 @@ Student Number: C18480456
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
+This project is a scene to enjoy music to. The scene is of a shoreline. It has a beach, sea, skyline, palm tree and some weather effects. The different objects animate and interact with each other to give users a calm and relaxing sight to listen to their favourite tunes to!
 
 # Instructions
+Fairly simple to use.
+
+Start music - Press key space.
+Rainfall - Press key R.
+Night Mode - Press key N.
+Color Mode - Press key C.
+
 
 # How it works
+The scene is essentially split up into two parts. One is the sea. The other is the skyline. The shoreline is part of the scene but has no interaction with any of the objects. For simple shapes such as the stars and raindrops I coded myself. For the more complex shapes 	e.g. the sea foam, palm tree and the clouds I used Art Station tool. This is an available tool in Processing client and allowed me to create a much more detailed scene and saved alot of time.  
+
+## Sea
+The sea is split into two objects.
+- Sea (Water)
+- Foam
+
+The water is a rectangle which can come in and out, creating a tide effect. This was done using if and if else statements. The height of the rectangle is incrementing and decrementing between two values. I used this throughout this assignmnet for animation. This was obviously very simple for a rectangle that just needs to move up and down in height.
+
+The foam is made up of four arcs. Like the sea it could come in and out working in the same way but using the y axis of the arcs rather than their heights. Their heights were changed to create a ripple effect that can been seen when the sea comes onto the beach.
+
+## Skyline
+
+The skyline was harder to create. It is split up several different objects; sky, clouds, 
+
+
+
+
+
 
 # What I am most proud of in the assignment
+
+
 
 # Markdown Tutorial
 

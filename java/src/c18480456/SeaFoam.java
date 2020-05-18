@@ -8,7 +8,7 @@ public class SeaFoam {
     private float y;
 
 
-   
+   //for animation between two values
     int flag = 0;
    
     public SeaFoam(float h, float y) {
@@ -20,6 +20,7 @@ public class SeaFoam {
         this(41, 0);
     }
 
+    //similar to sea
     public void tideIn() {
         if (y > -30) {
             y -= .25;
@@ -33,8 +34,8 @@ public class SeaFoam {
     }
 
     public void render(PApplet pa) {
-        // tide arcs
-        // tide arcs
+        // tide 
+        //made up of 4 arcs
         pa.fill(-1);
         pa.strokeWeight((float) 10.0);
         pa.stroke(-1);
@@ -76,9 +77,10 @@ public class SeaFoam {
 
     public void animate() {
 
+        //provides a ripple effect by incrementing/decrementing the height of the arcs
         if (flag == 0) {
             h -= 0.25;
-            
+
             if (h == 20) {
                 flag = 1;
             }

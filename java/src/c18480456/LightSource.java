@@ -3,6 +3,7 @@ package c18480456;
 import processing.core.PApplet;
 
 public class LightSource {
+    //no need for a y as it doesnt go up or down
     private float x;
     private boolean nightMode;
 
@@ -17,6 +18,7 @@ public class LightSource {
 
     public void render(PApplet pa) {
 
+        //if day
         if (nightMode == false) {
             pa.fill(-179);
             pa.strokeWeight(10);
@@ -26,7 +28,7 @@ public class LightSource {
             pa.rotate(0);
             pa.ellipse(x, 0, (float) 93.535225, (float) 93.535225);
             pa.popMatrix();
-        } else {
+        } else {                //if night
             pa.fill(-1644826);
             pa.strokeWeight(10);
             pa.stroke(-1);

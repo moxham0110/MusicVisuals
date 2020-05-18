@@ -24,8 +24,8 @@ public class Sky {
         //map color range from light to dark blue
         pa.fill( pa.map(colorCount, 0, 100, 162, 10)   , pa.map(colorCount, 0, 100, 180, 37),   pa.map(colorCount, 0, 100, 250, 93));
     
-        //fill(10, 37, 93);
-
+    
+        //the sky is a rectangle
         pa.noStroke();
         pa.pushMatrix();
         pa.translate((float)303.76016, (float)153.79404);
@@ -37,12 +37,14 @@ public class Sky {
 
     }
 
+    //takes in night flag
     public void nightMode(boolean nightFlag){
         
         //change to night
        if(colorCount < 100 && nightFlag == true){
             colorCount++;
        }
+       
        //change to day
 
        if(colorCount > 0 && nightFlag == false){
